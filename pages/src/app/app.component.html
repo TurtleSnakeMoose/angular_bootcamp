@@ -1,0 +1,47 @@
+<nav>
+  <ul class="pagination">
+    <li class="page-item" [appClass]="{disabled: currentPage === 0}">
+      <a (click)="currentPage = currentPage -1" class="page-link">Prev</a>
+    </li>
+    <ng-container *ngFor="let image of images; let i = index">
+      <li  
+        [appClass]="{active: currentPage === i}"
+        class="page-item"
+        *ngIf="paginationInBound(i)"
+        >
+        <a (click)="currentPage = i" [href]="" class="page-link">{{i+1}}</a>
+      </li>
+    </ng-container>
+    <li class="page-item" [appClass]="{disabled: currentPage === images.length-1}">
+      <a (click)="currentPage = currentPage +1" class="page-link">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+<!--example for custom attribute directive-->
+<div>
+  <h4 [appClass]="{cyka: currentPage > 0}">{{images[currentPage].title}}</h4>
+  <img [src]="images[currentPage].url" width="300px">
+</div>
+
+<!--example for custom tructural directive-->
+<ul *appTimes="5; let i = index">
+  <li>Hey There! ({{i +1}})</li>
+</ul>
+
+<!-- small example for ngSwitch-->
+<div [ngSwitch]="currentPage">
+  <div *ngSwitchCase="0">
+    Current page is 1
+  </div>
+  <div *ngSwitchCase="1">
+    Current page is 2
+  </div>
+  <div *ngSwitchCase="2">
+    Current page is 3
+  </div>
+  <div *ngSwitchDefault>
+    Current page is unknown.
+  </div>
+</div>
