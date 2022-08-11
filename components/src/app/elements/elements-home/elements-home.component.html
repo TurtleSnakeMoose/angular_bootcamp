@@ -2,3 +2,18 @@
     Placeholder Component
 </app-divider>
 <app-placeholder [lines]="6" [header]="true"></app-placeholder>
+
+<app-divider>
+    Segment Component
+</app-divider>
+
+<!-- ng-content with selector -->
+<app-segment>
+    <div class="cykablyat">
+        <i class="pdf file outline icon"></i>
+        No documents are listed for this customer
+    </div>
+    <button class="ui primary button">
+        Add Document
+    </button>
+</app-segment>
